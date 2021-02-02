@@ -12,26 +12,26 @@ namespace MyTestStore.DLL.Repositories
 {
     public class ClientsRepository: IRepository<Client>
     {
-        private readonly MyDbContext dbContext;
-        public ClientsRepository(MyDbContext _context)
+        private readonly MyDbContext _dbContext;
+        public ClientsRepository(MyDbContext context)
         {
-            this.dbContext = _context;
+            this._dbContext = context;
         }
         public IEnumerable<Client> GetAll()
         {
-            return dbContext.Clients;
+            return _dbContext.Clients;
         }
 
         public Client Get(int id)
         {
-            return dbContext.Clients.Find(id);
+            return _dbContext.Clients.Find(id);
         }
 
         public ActionResult Create(Client model)
         {
             try
             {
-                dbContext.Clients.Add(model);
+                _dbContext.Clients.Add(model);
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace MyTestStore.DLL.Repositories
         {
             try
             {
-                await dbContext.Clients.AddAsync(model);
+                await _dbContext.Clients.AddAsync(model);
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace MyTestStore.DLL.Repositories
         {
             try
             {
-                dbContext.Entry(model).State = EntityState.Modified;
+                _dbContext.Entry(model).State = EntityState.Modified;
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)
@@ -68,16 +68,16 @@ namespace MyTestStore.DLL.Repositories
 
         public IEnumerable<Client> Find(Func<Client, Boolean> predicate)
         {
-            return dbContext.Clients.Where(predicate).ToList();
+            return _dbContext.Clients.Where(predicate).ToList();
         }
 
         public ActionResult Delete(int id)
         {
             try
             {
-                Client model = dbContext.Clients.Find(id);
+                Client model = _dbContext.Clients.Find(id);
                 if (model != null)
-                    dbContext.Clients.Remove(model);
+                    _dbContext.Clients.Remove(model);
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)
@@ -90,7 +90,7 @@ namespace MyTestStore.DLL.Repositories
         {
             try
             {
-                dbContext.SaveChanges();
+                _dbContext.SaveChanges();
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace MyTestStore.DLL.Repositories
         {
             try
             {
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
                 return new ActionResult(true, "Fine");
             }
             catch (Exception ex)

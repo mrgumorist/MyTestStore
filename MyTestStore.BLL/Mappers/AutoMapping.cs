@@ -1,0 +1,17 @@
+﻿using MyTestStore.BLL.DTOs;
+using MyTestStore.DLL.Entities;
+using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MyTestStore.BLL.Mappers
+{
+    public class AutoMapping : Profile
+    {
+        public AutoMapping()
+        {
+            CreateMap<Client, ClientInfoDTO>();
+        }
+    }
+}

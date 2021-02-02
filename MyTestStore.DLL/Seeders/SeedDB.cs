@@ -13,6 +13,11 @@ namespace MyTestStore.DLL.Seeders
             {
                 var context = scope.ServiceProvider.GetRequiredService<MyDbContext>();
                 ClientsSeeder.SeedClients(context);
+                ProductsSeeder.SeedCategories(context);
+                ProductsSeeder.SeedProducts(context);
+                PurchaseSeeder.SeedPurchases(context);
+                PurchaseSeeder.SeedProductsInPurchase(context);
+                PurchaseSeeder.SeedPurchasesSum(context);
             }
         }
     }
