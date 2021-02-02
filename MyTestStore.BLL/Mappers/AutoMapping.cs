@@ -11,7 +11,8 @@ namespace MyTestStore.BLL.Mappers
     {
         public AutoMapping()
         {
-            CreateMap<Client, ClientInfoDTO>();
+            CreateMap<Client, ClientInfoDTO>(); 
+            CreateMap<Client, ClientWithBirth>();
         }
     }
 }

@@ -48,5 +48,32 @@ namespace MyTestStore.BLL.Services
 
             return result;
         }
+
+        public ActionResult GetClientByBirthDay(DateTime date)
+        {
+            ActionResult result = new ActionResult();
+            try
+            {
+                var clients = _clientsRepository.Find(x=>x.BirthDay.Day == date.Day&&x.BirthDay.Month==date.Month).ToList();
+                if (clients.Count != 0)
+                {
+                    var mappedClients = _mapper.Map<List<Client>, List<ClientWithBirth>>(clients);
+                    result.Description = "Success";
+                    result.IsSuccessfull = true;
+                    result.ResObj = mappedClients;
+                }
+                else
+                {
+                    result.IsSuccessfull = false;
+                    result.Description = "Client was not found";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccessfull = false;
+                result.Description = "Error: " + ex.Message;
+            }
+            return result;
+        }
     }
 }

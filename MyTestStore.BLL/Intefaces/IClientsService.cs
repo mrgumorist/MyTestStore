@@ -8,5 +8,6 @@ namespace MyTestStore.BLL.Intefaces
     public interface IClientsService
     {
         public ActionResult GetClientInfo(int ID);
+        public ActionResult GetClientByBirthDay(DateTime date);
     }
 }

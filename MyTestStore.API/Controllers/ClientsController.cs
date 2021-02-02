@@ -28,7 +28,7 @@ namespace MyTestStore.API.Controllers
             {
                 requestRes.IsSuccessfull = true;
                 requestRes.Message = result.Description;
-                requestRes.Object = result.ResObj;
+                requestRes.ResultData = result.ResObj;
             }
             else
             {
@@ -37,5 +37,26 @@ namespace MyTestStore.API.Controllers
             }
             return Ok(requestRes);
         }
+
+        [Route("api/[controller]/GetClientsByBirth")]
+        [HttpPost]
+        public ActionResult GetCopartModels([FromBody]BirthDateModel model)
+        {
+            Domain.Models.RequestResult requestRes = new Domain.Models.RequestResult();
+            var result = _service.GetClientByBirthDay(model.Date);
+            if (result.IsSuccessfull == true)
+            {
+                requestRes.IsSuccessfull = true;
+                requestRes.Message = result.Description;
+                requestRes.ResultData = result.ResObj;
+            }
+            else
+            {
+                requestRes.IsSuccessfull = false;
+                requestRes.Message = result.Description;
+            }
+            return Ok(requestRes);
+        }
+            
     }
 }

@@ -9,6 +9,6 @@ namespace MyTestStore.Domain.Models
         public bool IsSuccessfull { get; set; } = false;
         public string Message { get; set; } = "";
         public string Data { get; set; } = "";
-        public object Object { get; set; } = null;
+        public object ResultData { get; set; } = null;
     }
 }

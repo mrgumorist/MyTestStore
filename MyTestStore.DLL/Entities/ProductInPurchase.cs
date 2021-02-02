@@ -9,7 +9,7 @@ namespace MyTestStore.DLL.Entities
     {
         [Required, Key]
         public int ID { get; set; }
-        public double Count { get; set; }
+        public int Count { get; set; }
 
         public int ProductID { get; set; }
         public Product Product { get; set; }
