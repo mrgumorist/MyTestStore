@@ -9,5 +9,6 @@ namespace MyTestStore.BLL.Intefaces
     {
         public ActionResult GetClientInfo(int ID);
         public ActionResult GetClientByBirthDay(DateTime date);
+        public ActionResult GetLastClients(int days);
     }
 }
