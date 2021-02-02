@@ -70,6 +70,17 @@ namespace MyTestStore.DLL.Seeders
                 });
                 context.SaveChanges();
             }
+            if (context.ProductsInPurchase.FirstOrDefault(c => c.ID == 5) == null)
+            {
+                context.ProductsInPurchase.Add(new Entities.ProductInPurchase()
+                {
+                    ProductID = context.Products.First(x => x.ID == 3).ID,
+                    PurchaseID = context.Purchases.First(x => x.ID == 2).ID,
+                    Count = 5
+                });
+                context.SaveChanges();
+            }
+
         }
         public static void SeedPurchasesSum(MyDbContext context)
         {

@@ -45,6 +45,13 @@ namespace MyTestStore.API
 
             services.AddScoped<IRepository<Purchase>, PurchaseRepository>();
 
+            services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<IRepository<Category>, CategoriesRepository>();
+
+            services.AddScoped<IRepository<ProductInPurchase>, PurchaseProductsRepository>();
+
+            services.AddScoped<IRepository<Product>, ProductsRepository>();
+
             services.AddAutoMapper(c => c.AddProfile<BLL.Mappers.AutoMapping>(), typeof(Startup));
         }
 

@@ -83,7 +83,7 @@ namespace MyTestStore.BLL.Services
             ActionResult result = new ActionResult();
             try
             {
-                var purchases = _purchaseRepository.Find(x=>x.Date.Date>=DateTime.Now.Date.AddDays(-days)).GroupBy(x=>x.ClientID).Select(x=>x.First()).ToList();//(x => x.Purchases.LastOrDefault(l => l.Date.Date >= DateTime.Now.AddDays(-days).Date) != null).ToList();
+                var purchases = _purchaseRepository.Find(x=>x.Date.Date>=DateTime.Now.Date.AddDays(-days)).GroupBy(x=>x.ClientID).Select(x=>x.First()).ToList();
                 if (purchases.Count != 0)
                 {
                     List<ClientWithLastPurchase> clients = new List<ClientWithLastPurchase>();

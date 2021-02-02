@@ -53,6 +53,17 @@ namespace MyTestStore.DLL.Seeders
                 });
                 context.SaveChanges();
             }
+            if (context.Products.FirstOrDefault(c => c.Article == "ggg33") == null)
+            {
+                context.Products.Add(new Entities.Product()
+                {
+                    Article = "ggg33",
+                    CategoryID = context.Categories.First(x => x.Name == "Motorcycle").ID,
+                    Price = 433000,
+                    Name = "Yamasaki z9000"
+                });
+                context.SaveChanges();
+            }
         }
     }
 }
